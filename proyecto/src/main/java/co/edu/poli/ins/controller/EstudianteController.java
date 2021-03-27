@@ -24,22 +24,19 @@ public class EstudianteController {
 	private EstudianteRepository estudianteRepository;
 
 
-	@Autowired
-	private MateriaRepository materiaRepository;
-
 	@PostMapping("/estudiante")
 	public Estudiante createEstudiante(@RequestBody Estudiante estudiante) {
 		return estudianteRepository.save(estudiante);
 	}
 
 	@GetMapping("/estudiantes/{id}")
-	public Estudiante getEstudianteById(@PathVariable Long id) { 
+	public Estudiante getEstudianteById(@PathVariable String id) { 
 		Estudiante employee =  estudianteRepository.findById(id).get();
 		return employee;
 	}
 
 	@DeleteMapping("/estudiante/{id}")
-	public Estudiante deleteEstudiante(@PathVariable Long id) {
+	public Estudiante deleteEstudiante(@PathVariable String id) {
 		Estudiante  estudiantedb = estudianteRepository.findById(id).get();
 		estudianteRepository.deleteById(id);
 		return estudiantedb;

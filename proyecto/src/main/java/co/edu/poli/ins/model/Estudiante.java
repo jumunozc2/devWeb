@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name="Estudinates")
+@Table(name="Estudiantes")
 public class Estudiante {
 
 	@Id
 	@Column(name="CODIGO_ESTUDIANTIL")
-	private Long codigo;
+	private String codigo;
 
 	@Column(name = "NOMBRES")
 	private String nombres;
@@ -28,7 +28,13 @@ public class Estudiante {
 	private String carrera;
 
 	@Column(name = "NUMERO_CELULAR")
-	private Long celular;
+	private String celular;
+	
+	@Column(name ="Usuario")
+	private String usuario;
+	
+	@Column(name ="Contraseña")
+	private String contraseña;
 
 	@ManyToMany (mappedBy="estudiantes")
 	@JsonIgnore
@@ -37,21 +43,24 @@ public class Estudiante {
 
 	public  Estudiante () {}
 
-	public  Estudiante (Long codigo,String nombres,String apellidos,String carrera,Long celular ) {
+	public  Estudiante (String codigo,String nombres,String apellidos,String carrera,String celular
+			,String usuario, String contraseña) {
 		this.codigo = codigo;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.carrera = carrera;
 		this.celular = celular;
+		this.usuario =  usuario;
+		this.contraseña = contraseña;
 
 	}
 	//Getters y Setters de los atributos 
 
-	public Long getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Long codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
@@ -79,14 +88,29 @@ public class Estudiante {
 		this.carrera = carrera;
 	}
 
-	public Long getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(Long celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	//
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
 
 	public Set<Materia> getMaterias() {
 		return materias;
@@ -95,4 +119,6 @@ public class Estudiante {
 	public void setMaterias(Set<Materia> materias) {
 		this.materias = materias;
 	}
+
+	
 }

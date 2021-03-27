@@ -2,6 +2,7 @@ package co.edu.poli.ins.model;
 
 import java.util.Set;
 
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,13 +16,13 @@ public class Materia {
 	//llave primaria 
 	@Id
 	@Column(name="NRC")
-	private Long nrc;
-
-	@Column(name = "TITULO")
-	private String titulo;
+	private String nrc;
 
 	@Column(name = "MATERIA")
 	private String materia;
+
+	@Column(name = "FACULTAD")
+	private String facultad;
 
 	@Column(name = "HORAS_CREDITO")
 	private String horasCredito;
@@ -48,34 +49,27 @@ public class Materia {
 	
 	public Materia() {}
 
-	public Materia(Long nrc,String titulo, String materia,String horasCredito,String campus,String periodoAsociado,
+	public Materia(String nrc,String facultad, String materia,String horasCredito,String campus,String periodoAsociado,
 			String metodoEducativo) {
 
 		this.nrc = nrc;
-		this.titulo = titulo;
+		this.facultad= facultad;
 		this.materia = materia;
 		this.horasCredito = horasCredito;
 		this.campus = campus;
 		this.periodoAsociado = periodoAsociado;
 		this.metodoEducativo = metodoEducativo;
+	
 
 	}
 	//Getters y Setters de los atributos 
 
-	public Long getNrc() {
+	public String getNrc() {
 		return nrc;
 	}
 
-	public void setNrc(Long nrc) {
+	public void setNrc(String nrc) {
 		this.nrc = nrc;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public String getMateria() {
@@ -84,6 +78,14 @@ public class Materia {
 
 	public void setMateria(String materia) {
 		this.materia = materia;
+	}
+
+	public String getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(String facultad) {
+		this.facultad = facultad;
 	}
 
 	public String getHorasCredito() {
@@ -117,7 +119,6 @@ public class Materia {
 	public void setMetodoEducativo(String metodoEducativo) {
 		this.metodoEducativo = metodoEducativo;
 	}
-	//
 
 	public Set<Estudiante> getEstudiantes() {
 		return estudiantes;
@@ -126,6 +127,5 @@ public class Materia {
 	public void setEstudiantes(Set<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
-
 
 }
