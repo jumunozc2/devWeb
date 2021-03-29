@@ -42,7 +42,7 @@ public class MateriaController {
 	}
 
 	@DeleteMapping("/materia/{id}")
-	public Materia deleteEstudiante(@PathVariable String id) {
+	public Materia deleteMateria(@PathVariable String id) {
 		Materia  materiadb = materiaRepository.findById(id).get();
 		materiaRepository.deleteById(id);
 		return materiadb;
