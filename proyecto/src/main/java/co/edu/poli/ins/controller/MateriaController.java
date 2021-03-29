@@ -43,9 +43,9 @@ public class MateriaController {
 
 	@DeleteMapping("/materia/{id}")
 	public Materia deleteEstudiante(@PathVariable String id) {
-		Materia  estudiantedb = materiaRepository.findById(id).get();
+		Materia  materiadb = materiaRepository.findById(id).get();
 		materiaRepository.deleteById(id);
-		return estudiantedb;
+		return materiadb;
 	}
 	
 	@PutMapping("/materias/{mat}/{est}")
