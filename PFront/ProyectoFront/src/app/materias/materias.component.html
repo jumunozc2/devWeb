@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Logout</a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a routerLink="/home" class="nav-link">Home</a>
+    </li>
+  </div>
+</nav>
+<form #myForm="ngForm">
+
+    <div style="width: 400px; margin: auto;">
+        <div class="submit-form">
+          <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="language">NRC</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nrc"
+                  required
+                  [(ngModel)]="materia.nrc"
+                  name="nrc"
+                />
+              </div>
+      
+            <div class="form-group">
+              <label for="language">MATERIA</label>
+              <input
+                type="text"
+                class="form-control"
+                id="materia"
+                required
+                [(ngModel)]="materia.materia"
+                name="materia"
+              />
+            </div>
+      
+            <div class="form-group">
+                <label for="country">FACULTAD</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="facultad"
+                  required
+                  [(ngModel)]="materia.facultad"
+                  name="facultad"
+                />
+              </div>
+              <div class="form-group">
+                <label for="title">HORAS CREDITO</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="horasCredito"
+                  required
+                  [(ngModel)]="materia.horasCredito"
+                  name="horasCredito"
+                />
+              </div>
+              <div class="form-group">
+                <label for="author">CAMPUS</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="campus"
+                  required
+                  [(ngModel)]="materia.campus"
+                  name="campus"
+                />
+              </div>
+              <div class="form-group">
+                <label for="author">PERIODO ASOCIADO</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="periodoAsociado"
+                  required
+                  [(ngModel)]="materia.periodoAsociado"
+                  name="periodoAsociado"
+                />
+              </div>
+              <div class="form-group">
+                <label for="author">METODO EDUCATIVO</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="metodoEducativo"
+                  required
+                  [(ngModel)]="materia.metodoEducativo"
+                  name="metodoEducativo"
+                />
+              </div>
+              
+            <button (click)="create()" [disabled]="!myForm.form.valid" class="btn btn-success">Submit</button>
+          </div>
+          
+          <div *ngIf="submitted">
+            <h4>You submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newMateria()">Add</button>
+          </div>
+          
+        </div> 
+      </div>
+      {{msgError}}
+    </form>

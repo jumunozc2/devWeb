@@ -1,0 +1,314 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Logout</a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a routerLink="/home" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/materias" class="nav-link">Add Materia</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/estudiantes" class="nav-link">Add Estudiante</a>
+    </li>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <div class="card">
+      <h3 class="text-center">MATERIAS</h3>
+      <div class="card-body">
+      <div class="form-group form-inline">
+        BUSQUEDA POR MATERIA:
+        <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"
+          (input)="search($event.target.value)" />
+         
+      </div>
+        <table class="table table-striped">
+          <thead>
+            <th scope="col">NRC</th>
+            <th scope="col">MATERIA</th>
+            <th scope="col">FACULTAD</th>
+            <th scope="col">HORAS CREDITO</th>
+            <th scope="col">CAMPUS</th>
+            <th scope="col">PERIODO ASOCIADO</th>
+            <th scope="col">METODO EDUCATIVO</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of bookSet | listFilter: searchTerm ; let i = index " >
+              <td>{{item.nrc}}</td>
+              <td>{{item.materia}}</td>
+              <td>{{item.facultad}}</td>
+              <td>{{item.horasCredito}}</td>
+              <td>{{item.campus}}</td>
+              <td>{{item.periodoAsociado}}</td>
+              <td>{{item.metodoEducativo}}</td>
+              <td>
+                <button class="btn btn-info btn-sm"    
+                (click)="triggerModal(modalData, item)">
+                  Edit </button>
+                  &nbsp;
+                <button class='btn btn-danger btn-sm' (click)="deleteBook(item.nrc)" >
+                  Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  
+  <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar Materia</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+  
+      <div style="width: 400px; margin: auto;">
+        <div class="submit-form">
+          <div class="form-group">
+            <label for="nrc">NRC</label>
+            <input
+              disabled
+              type="text"
+              class="form-control"
+              id="nrc"
+              required
+              [(ngModel)]="currentBook.nrc"
+              name="nrc"
+            />
+          </div>
+            <div class="form-group">
+              <label for="materia">MATERIA</label>
+              <input
+                disabled
+                type="text"
+                class="form-control"
+                id="materia"
+                required
+                [(ngModel)]="currentBook.materia"
+                name="materia"
+              />
+            </div>
+            <div class="form-group">
+              <label for="facultad">FACULTAD</label>
+              <input
+                type="text"
+                class="form-control"
+                id="facultad"
+                required
+                [(ngModel)]="currentBook.facultad"
+                name="facultad"
+              />
+            </div>
+            <div class="form-group">
+                <label for="title">HORAS CREDITO</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="horasCredito"
+                  required
+                  [(ngModel)]="currentBook.horasCredito"
+                  name="horasCredito"
+                />
+              </div>
+            <div class="form-group">
+                <label for="campus">CAMPUS</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="campus"
+                  required
+                  [(ngModel)]="currentBook.campus"
+                  name="campus"
+                />
+            </div>
+            <div class="form-group">
+              <label for="title">PERIODO ASOCIADO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="periodoAsociado"
+                required
+                [(ngModel)]="currentBook.periodoAsociado"
+                name="periodoAsociado"
+              />
+            </div>
+            <div class="form-group">
+              <label for="title">METODO EDUCATIVO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="metodoEducativo "
+                required
+                [(ngModel)]="currentBook.metodoEducativo "
+                name="metodoEducativo "
+              />
+            </div>
+          </div>
+      </div>
+    
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" 
+      
+      (click)="updateBook()"
+      
+      (click)="modal.close('Save click')">GUARDAR</button>
+    </div>
+  </ng-template>
+  
+  <div class="container">
+    <div class="card">
+      <h3 class="text-center">ESTUDIANTES</h3>
+      <div class="card-body">
+      <div class="form-group form-inline">
+        BUSQUEDA POR ESTUDIANTES:
+        <input class="form-control ml-2" type="text" name="searchTerm2" [(ngModel)]="searchTerm2"
+          (input)="search2($event.target.value)" />
+          
+      </div>
+        <table class="table table-striped">
+          <thead>
+            <th scope="col">CODIGO</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">APELLIDOS</th>
+            <th scope="col">CELULAR</th>
+            <th scope="col">CARRERA</th>
+            <th scope="col">USUARIO</th>
+            <th scope="col">CONTRASEÑA</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item2 of bookSet2 | listFilter2: searchTerm2 ; let i = index " >
+              <td>{{item2.codigo}}</td>
+              <td>{{item2.nombres}}</td>
+              <td>{{item2.apellidos}}</td>
+              <td>{{item2.celular}}</td>
+              <td>{{item2.carrera}}</td>
+              <td>{{item2.usuario}}</td>
+              <td>{{item2.contrasenia}}</td>
+              <td>
+                <button class="btn btn-info btn-sm"    
+                (click)="triggerModal2(modalData2, item2)">
+                  Edit </button>
+                  &nbsp;
+                <button class='btn btn-danger btn-sm' (click)="deleteBook2(item2.codigo)" >
+                  Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  <ng-template #modalData2 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar Estudiante</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+  
+      <div style="width: 400px; margin: auto;">
+        <div class="submit-form">
+          <div class="form-group">
+            <label for="nrc">CODIGO</label>
+            <input
+              disabled
+              type="text"
+              class="form-control"
+              id="codigo"
+              required
+              [(ngModel)]="currentBook2.codigo"
+              name="codigo"
+            />
+          </div>
+            <div class="form-group">
+              <label for="materia">NOMBRES</label>
+              <input
+                disabled
+                type="text"
+                class="form-control"
+                id="nombres"
+                required
+                [(ngModel)]="currentBook2.nombres"
+                name="nombres"
+              />
+            </div>
+            <div class="form-group">
+              <label for="facultad">APELLIDOS</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellidos"
+                required
+                [(ngModel)]="currentBook2.apellidos"
+                name="apellidos"
+              />
+            </div>
+            <div class="form-group">
+                <label for="title">CELULAR</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="celular"
+                  required
+                  [(ngModel)]="currentBook2.celular"
+                  name="celular"
+                />
+              </div>
+            <div class="form-group">
+                <label for="campus">CARRERA</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="carrera"
+                  required
+                  [(ngModel)]="currentBook2.carrera"
+                  name="carrera"
+                />
+            </div>
+            <div class="form-group">
+              <label for="title">USUARIO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="usuario"
+                required
+                [(ngModel)]="currentBook2.usuario"
+                name="usuario"
+              />
+            </div>
+            <div class="form-group">
+              <label for="title">CONTRASEÑA</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contrasenia "
+                required
+                [(ngModel)]="currentBook2.contrasenia "
+                name="contrasenia "
+              />
+            </div>
+          </div>
+      </div>
+    
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" 
+      
+      (click)="updateBook2()"
+      
+      (click)="modal.close('Save click')">GUARDAR</button>
+    </div>
+  </ng-template>
+  
+  

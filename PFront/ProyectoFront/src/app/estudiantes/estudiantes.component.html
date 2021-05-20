@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Logout</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/home" class="nav-link">Home</a>
+      </li>
+    </div>
+  </nav>
+  <form #myForm="ngForm">
+  
+      <div style="width: 400px; margin: auto;">
+          <div class="submit-form">
+            <div *ngIf="!submitted">
+              <div class="form-group">
+                  <label for="language">CODIGO</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="codigo"
+                    required
+                    [(ngModel)]="estudiante.codigo"
+                    name="codigo"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="language">ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="id"
+                      required
+                      [(ngModel)]="estudiante.id"
+                      name="id"
+                    />
+                  </div>
+        
+              <div class="form-group">
+                <label for="language">NOMBRES</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombres"
+                  required
+                  [(ngModel)]="estudiante.nombres"
+                  name="nombres"
+                />
+              </div>
+        
+              <div class="form-group">
+                  <label for="country">APELLIDOS</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="apellidos"
+                    required
+                    [(ngModel)]="estudiante.apellidos"
+                    name="apellidos"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="title">CELULAR</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="celular"
+                    required
+                    [(ngModel)]="estudiante.celular"
+                    name="celular"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="author">CARRERA</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="carrera"
+                    required
+                    [(ngModel)]="estudiante.carrera"
+                    name="carrera"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="author">USUARIO</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="usuario"
+                    required
+                    [(ngModel)]="estudiante.usuario"
+                    name="usuario"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="author">USERNAME</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userName"
+                      required
+                      [(ngModel)]="estudiante.userName"
+                      name="userName"
+                    />
+                  </div>
+                <div class="form-group">
+                  <label for="author">CONTRASEÑA</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contrasenia"
+                    required
+                    [(ngModel)]="estudiante.contrasenia"
+                    name="contrasenia"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="author">PASSWORD</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="password"
+                      required
+                      [(ngModel)]="estudiante.password"
+                      name="password"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="author">ACTIVE</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="active"
+                      required
+                      [(ngModel)]="estudiante.active"
+                      name="active"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="author">ROLE</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="roles"
+                      required
+                      [(ngModel)]="estudiante.roles"
+                      name="roles"
+                    />
+                  </div>
+                
+              <button (click)="create()" [disabled]="!myForm.form.valid" class="btn btn-success">Submit</button>
+            </div>
+            
+            <div *ngIf="submitted">
+              <h4>You submitted successfully!</h4>
+              <button class="btn btn-success" (click)="newMateria()">Add</button>
+            </div>
+            
+          </div> 
+        </div>
+        {{msgError}}
+      </form>

@@ -1,0 +1,153 @@
+body {
+    background: #000 !important;
+}
+.card {
+    border: 1px solid #28a745;
+}
+.card-login {
+    margin-top: 130px;
+    padding: 18px;
+    max-width: 30rem;
+}
+
+.card-header {
+    color: #fff;
+    /*background: #ff0000;*/
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600 !important;
+    margin-top: 10px;
+    border-bottom: 0;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #ff0000;
+    color: #fff;
+    border:0 !important;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn{
+    width: 130px;
+}
+
+.login_btn:hover{
+    color: #fff;
+    background-color: #ff0000;
+}
+
+.btn-outline-danger {
+    color: #fff;
+    font-size: 18px;
+    background-color: #28a745;
+    background-image: none;
+    border-color: #28a745;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #28a745;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 1px solid #28a745;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-group-text {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+}
+
+/* 
+The container box is relative so we can position stuff inside of it 
+*/
+.image-box {
+    position: relative;
+  }
+  
+  
+  .image-box__background,
+  .image-box__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  /* 
+  The background image div sizes and positions the background itself.
+  It's also at the bottom-most position in our "div stack" (z-index 1)
+  
+  We set the image url via a CSS custom property, that's set via the style attribute in our HTML
+  */
+  .image-box__background {
+    background-size: cover !important;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: var(--image-url);
+  
+    z-index: 1
+  }
+  
+  /* 
+  The overlay div is just a colored element with some opacity.
+  It's above the background image in our stack, so it appears to 
+  darken the image 
+  */
+  .image-box__overlay {
+    background: rgba(0, 0, 0, 0.5);
+  
+    z-index: 2;
+  }
+  
+  /* 
+  The content div is at the top of our stack. 
+  We'd probably add some padding or flexbox properties here as well, 
+  to place the content appropriately
+  */
+  .image-box__content {
+    position: relative;
+  
+    z-index: 3;
+    
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* just for the demo */
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  h1 {
+    font-size: 30px;
+  }

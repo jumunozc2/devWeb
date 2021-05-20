@@ -1,7 +1,9 @@
 package co.edu.poli.ins.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,27 +20,52 @@ import co.edu.poli.ins.repository.MateriaRepository;
 
 @RestController 
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "*")
 public class EstudianteController {
 
 	@Autowired
-	private EstudianteRepository estudianteRepository;
+    private EstudianteRepository estudianteRepository;
 
+    @GetMapping("/Estudiante")
+    public List<Estudiante> getAllEstudiantes(){
+        return estudianteRepository.findAll();
+    }
+    @GetMapping("/Estudiante/{id}")
+    public Estudiante getEstudianteByID(@PathVariable String id) {
+        return estudianteRepository.findById(id).get();
+    }
+    @PostMapping("/Estudiante")
+    public Estudiante saveEstudiante(@RequestBody Estudiante estudiante){
+        return estudianteRepository.save(estudiante);
+    }
+    @PutMapping("/Estudiante/{codigo}")
+    public Estudiante updateEstudiante(@PathVariable String codigo, @RequestBody Estudiante newEstudiante) {
+        Estudiante estudiantedb = estudianteRepository.findById(codigo).get();
 
-	@PostMapping("/estudiante")
-	public Estudiante createEstudiante(@RequestBody Estudiante estudiante) {
-		return estudianteRepository.save(estudiante);
-	}
+        estudiantedb.setCodigo(newEstudiante.getCodigo());
+        estudiantedb.setNombres(newEstudiante.getNombres());
+        estudiantedb.setApellidos(newEstudiante.getApellidos());
 
-	@GetMapping("/estudiantes/{id}")
-	public Estudiante getEstudianteById(@PathVariable String id) { 
-		Estudiante employee =  estudianteRepository.findById(id).get();
-		return employee;
-	}
+        estudiantedb.setCarrera(newEstudiante.getCelular());
+        estudiantedb.setUsuario(newEstudiante.getUsuario());
+        estudiantedb.setContrasenia(newEstudiante.getContrasenia());
 
-	@DeleteMapping("/estudiante/{id}")
-	public Estudiante deleteEstudiante(@PathVariable String id) {
-		Estudiante  estudiantedb = estudianteRepository.findById(id).get();
-		estudianteRepository.deleteById(id);
-		return estudiantedb;
+        estudianteRepository.save(estudiantedb);
+        return estudiantedb;
+    }
+    @PostMapping("/EstudiantePList")
+    public List<Estudiante> saveListEstudiantes(@RequestBody List<Estudiante> estudiante) {
+        return estudianteRepository.saveAll(estudiante);
+    }
+    @DeleteMapping("/Estudiante/{id}")
+    public Estudiante deleteEstudianteById(@PathVariable String id) {
+        Estudiante _estudinate= estudianteRepository.findById(id).get();
+        estudianteRepository.deleteById(id);
+        return  _estudinate;
+    }
+
+    @DeleteMapping("/EstudianteDList")
+    public void deleteAll() {
+        estudianteRepository.deleteAll();
 	}
 }

@@ -34,7 +34,7 @@ public class Estudiante {
 	private String usuario;
 	
 	@Column(name ="Contraseña")
-	private String contraseña;
+	private String contrasenia;
 
 	@ManyToMany (mappedBy="estudiantes")
 	@JsonIgnore
@@ -51,7 +51,7 @@ public class Estudiante {
 		this.carrera = carrera;
 		this.celular = celular;
 		this.usuario =  usuario;
-		this.contraseña = contraseña;
+		this.contrasenia = contraseña;
 
 	}
 	//Getters y Setters de los atributos 
@@ -104,12 +104,12 @@ public class Estudiante {
 		this.usuario = usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
 	public Set<Materia> getMaterias() {
@@ -119,6 +119,8 @@ public class Estudiante {
 	public void setMaterias(Set<Materia> materias) {
 		this.materias = materias;
 	}
+
+	
 
 	
 }
