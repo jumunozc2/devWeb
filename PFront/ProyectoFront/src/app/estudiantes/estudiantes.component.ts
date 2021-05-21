@@ -61,6 +61,18 @@ export class EstudiantesComponent implements OnInit {
             console.log(error);
           });
 
+          this.service.sms(data)
+          .subscribe(
+            response=>{
+              this.submitted=true;
+              console.log(response);
+            },
+            error => {
+              this.msgError  = error.message +' \n '+ error.error.message;
+              console.log(error);
+            });
+          
+
   }
 
   newMateria() {

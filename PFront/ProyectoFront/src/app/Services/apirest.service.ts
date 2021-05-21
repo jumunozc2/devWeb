@@ -26,6 +26,14 @@ export class ApirestService {
       return this.http.get("http://localhost:8080/api/v1/",{headers,responseType:'test' as 'json'});
     }
 
+    public sms(data: any): Observable<any> {
+      let username = this.currentUser$.getValue();
+      let password  = this.currentPass$.getValue();
+      
+      const headers = new HttpHeaders({Authorization: 'Basic '+btoa(username+":"+password)})
+      return this.http.post("http://localhost:8080/api/v1/SMS", data,{headers});
+    }
+
     get(id: String): Observable<Materia> {
       let username = this.currentUser$.getValue();
       let password  = this.currentPass$.getValue();
